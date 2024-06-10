@@ -43,4 +43,4 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build Docker image with Gradle
-        run: ./gradlew jib --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/gemini-spring-ai/gemini-spring-ai:latest
+        run: ./gradlew jib --image=us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/gemini-spring-ai/gemini-spring-ai:latest
