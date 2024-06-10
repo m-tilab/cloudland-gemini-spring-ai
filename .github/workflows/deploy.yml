@@ -23,8 +23,13 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-      - name: Configure Docker for GCR
-        run: gcloud auth configure-docker
+      - name: Docker Auth
+        id: docker-auth
+        uses: 'docker/login-action@v1'
+        with:
+          username: 'oauth2accesstoken'
+          password: '${{ steps.auth.outputs.access_token }}'
+          registry: 'us-central1-docker.pkg.dev'
 
       - name: Set up Gradle
         uses: actions/setup-java@v3
