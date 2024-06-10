@@ -1,0 +1,9 @@
+spring.application.name: cloudland-gemini-spring-ai
+spring:
+  ai:
+    vertex:
+      ai:
+        gemini:
+          project-id: persian-java-talk
+          location: us-central1
+
