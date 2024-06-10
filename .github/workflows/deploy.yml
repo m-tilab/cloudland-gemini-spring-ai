@@ -44,7 +44,9 @@ jobs:
 
       - name: Build Docker image with Gradle
         run: ./gradlew jib --image=${{ vars.REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}
-
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
