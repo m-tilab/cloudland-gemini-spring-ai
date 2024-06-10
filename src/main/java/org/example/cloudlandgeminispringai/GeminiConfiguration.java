@@ -1,4 +1,3 @@
-
 package org.example.cloudlandgeminispringai;
 
 import com.google.cloud.vertexai.VertexAI;
