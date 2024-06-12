@@ -1,4 +1,4 @@
-package org.example.cloudlandgeminispringai;
+package org.example.cloudlandgeminispringai.simple;
 
 import org.springframework.ai.chat.messages.Media;
 import org.springframework.ai.chat.messages.UserMessage;

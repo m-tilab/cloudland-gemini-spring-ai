@@ -43,6 +43,7 @@ jobs:
 
       - name: Build Docker image with Gradle
         env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
 
         run: ./gradlew jib --image=${{ vars.REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}
 
