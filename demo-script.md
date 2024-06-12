@@ -1,4 +1,4 @@
-# ADC demo commands
+# ADC (Application Default Credentials) demo commands
 
 gcloud auth list
 

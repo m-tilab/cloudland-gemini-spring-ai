@@ -1,29 +1,42 @@
 package org.example.cloudlandgeminispringai;
 
-import com.google.cloud.vertexai.VertexAI;
-import com.google.cloud.vertexai.generativeai.ChatSession;
-import com.google.cloud.vertexai.generativeai.GenerativeModel;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Description;
+
+import java.util.function.Function;
 
 
 @Configuration
 public class GeminiConfiguration {
 
-    @Bean
-    public GenerativeModel geminiProVisionGenerativeModel(VertexAI vertexAI) {
-        return new GenerativeModel("gemini-pro-vision", vertexAI);
+    public record Request(String location) {
+    }
+
+    public record Response(double temp, String conditions) {
     }
 
     @Bean
-    public GenerativeModel geminiProGenerativeModel(VertexAI vertexAI) {
-        return new GenerativeModel("gemini-1.0-pro-002", vertexAI);
-    }
+    @Description("Get the current weather conditions for the given city.") // function description
+    public Function<GeminiConfiguration.Request, GeminiConfiguration.Response> currentWeather() {
+        return request -> {
 
-    @Bean
-    public ChatSession chatSession(@Qualifier("geminiProVisionGenerativeModel") GenerativeModel generativeModel) {
-        return new ChatSession(generativeModel);
+            int temp = 0;
+            String conditions = "";
+
+            if (request.location().equalsIgnoreCase("Frankfurt")) {
+
+                temp = 15;
+                conditions = "Party Cloudy";
+            } else if (request.location().equalsIgnoreCase("Berlin")) {
+
+                temp = 13;
+                conditions = "Cloudy";
+
+            }
+            return new GeminiConfiguration.Response(temp, conditions);
+
+        };
     }
 }
 
