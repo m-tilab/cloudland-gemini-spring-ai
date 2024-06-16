@@ -6,9 +6,9 @@ spring:
         gemini:
           project-id: ${GCP_PROJECT_ID:persian-java-talk}
           location: ${REGION:us-central1}
-          chat:
-            options:
-              functions: currentWeather
+#          chat:
+#            options:
+#              functions: currentWeather
 
 weather:
   api-key: ${WEATHER_API_KEY}
